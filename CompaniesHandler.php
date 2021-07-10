@@ -91,7 +91,7 @@ class CompaniesHandler  {
 			echo $response;
 		}
 	}
-	
+	 
 	public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);
 		return $jsonResponse;		

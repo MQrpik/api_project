@@ -1,8 +1,6 @@
 <?php
 require_once("controller/dbcontroller.php");
-/* 
-A domain Class to demonstrate RESTful web services
-*/
+
 Class Company {
 	private $companies = [];
 	
