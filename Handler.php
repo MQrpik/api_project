@@ -1,6 +1,6 @@
 <?php
 
-require_once("LinkkBackend.php");
+require_once("LinkBackend.php");
 		
 class Handler  {
 
@@ -10,21 +10,9 @@ class Handler  {
 		$rawData = $companies->getAllEntry();
 
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);	
-			echo " nie dziala pojedynczy list";		
+			echo "Błąd wyświetlania";		
 		} else {
 			$response = $this->encodeJson($rawData);
-			echo $response;
-		}
-
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		//$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["output"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
 			echo $response;
 		}
 	}
@@ -33,21 +21,9 @@ class Handler  {
 		$entry = new Company();
 		$rawData = $entry->addEntry();
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);	
-			echo " nie dziala add";	
+			echo "Błąd dodawania wpisu";	
 		} else {
-			$statusCode = 200;
-			echo "dziala add";
-		}
-		
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		//$this ->setHttpHeaders($requestContentType, $statusCode);
-		$result = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
+			echo "Dodano wpis";
 		}
 	}
 
@@ -56,19 +32,9 @@ class Handler  {
 		$rawData = $mobile->deleteEntry();
 		
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);		
+			echo "Błąd kasowania";
 		} else {
 			echo "Skasowano wpis";
-		}
-		
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		//$this ->setHttpHeaders($requestContentType, $statusCode);
-		$result = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
 		}
 	}
 	
@@ -76,20 +42,11 @@ class Handler  {
 		$company = new Company();
 		$rawData = $company->editEntry();
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);		
+			echo "Błąd edycji";		
 		} else {
-			$statusCode = 200;
+			echo "Edytowano wpis";
 		}
 		
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		//$this ->setHttpHeaders($requestContentType, $statusCode);
-		$result = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
 	}
 	 
 	function getAllCategories() {	
@@ -98,47 +55,31 @@ class Handler  {
 		$rawData = $category->getAllCat();
 
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);	
-			echo " nie dziala pojedynczy list";		
+			echo "Błąd wyświetlania gategorii";		
 		} else {
 			$response = $this->encodeJson($rawData);
 			echo $response;
 		}
 
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		//$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["output"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
 	}
 
 	function addCat() {	
 		$category = new Category();
 		$rawData = $category->addCategory();
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);	
-			echo " nie dziala add";	
+			echo "Błąd dodawania kategorii";	
 		} else {
-			$statusCode = 200;
-			echo "dziala add";
+			echo "Dodano kategorie";
 		}
 	}
 
 	function deleteCatById() {	
 		$cat = new Category();
-		$rawData = $cat->deleteCategory();
-		
+		$rawData = $cat->deleteCategory();	
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);		
+			echo "Błąd kasowania kategorii";
 		} else {
-			echo "Skasowano wpis";
+			echo "Skasowano kategorię";
 		}
 	}
 
@@ -146,10 +87,9 @@ class Handler  {
 		$cat = new Category();
 		$rawData = $cat->editCategory();
 		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('success' => 0);		
+			echo "Błąd edycji kategorii";		
 		} else {
-			$statusCode = 200;
+			echo "Edytowano nazwę kategorii";
 		}
 	}
 
