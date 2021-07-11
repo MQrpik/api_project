@@ -33,7 +33,6 @@ Class Company {
 			$dbcontroller = new DBController();
 			$result = $dbcontroller->executeQuery($query);
 			if($result != 0){
-				$result = array('success'=>1);
 				return $result;
 			}
 		}
@@ -46,7 +45,6 @@ Class Company {
 			$dbcontroller = new DBController();
 			$result = $dbcontroller->executeQuery($query);
 			if($result != 0){
-				$result = array('success'=>1);
 				return $result;
 			}
 		}
@@ -64,7 +62,6 @@ Class Company {
 		$dbcontroller = new DBController();
 		$result= $dbcontroller->executeQuery($query);
 		if($result != 0){
-			//$result = array('success'=>1);
 			return $result;
 		}
 	}
@@ -94,7 +91,6 @@ Class Category {
 			$dbcontroller = new DBController();
 			$result = $dbcontroller->executeQuery($query);
 			if($result != 0){
-				$result = array('success'=>1);
 				return $result;
 			}
 		}
@@ -106,8 +102,7 @@ Class Category {
 			$query = 'DELETE FROM categories WHERE id = '.$id;
 			$dbcontroller = new DBController();
 			$result = $dbcontroller->executeQuery($query);
-			if($result != 0){
-				$result = array('success'=>1);
+			if($result != 0){			
 				return $result;
 			}
 		}
@@ -121,7 +116,6 @@ Class Category {
 		$dbcontroller = new DBController();
 		$result= $dbcontroller->executeQuery($query);
 		if($result != 0){
-			//$result = array('success'=>1);
 			return $result;
 		}
 	}

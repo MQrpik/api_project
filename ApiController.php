@@ -1,5 +1,5 @@
 <?php
-require_once("CompaniesHandler.php");
+require_once("Handler.php");
 require_once("utils/debug.php");
 $method = $_SERVER['REQUEST_METHOD'];
 $view = "";
@@ -9,37 +9,37 @@ $page_key = $_GET["do"];
 	switch($page_key){
 
 		case "list":		
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$result = $companiesHandler->getAllEntries();
 			break;
 
 		case "listCat":		
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$result = $companiesHandler->getAllCategories();
 			break;
 	
 		case "create":		
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$companiesHandler->add();
 		break;
 
 		case "createCat":		
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$companiesHandler->addCat();
 		break;
 		
 		case "delete":
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$result = $companiesHandler->deleteEntryById();
 		break;
 
 		case "deleteCat":
-			$companiesHandler = new CompaniesHandler();
+			$companiesHandler = new Handler();
 			$result = $companiesHandler->deleteCatById();
 		break;
 		
 		case "update":
-				$companiesHandler = new CompaniesHandler();
+				$companiesHandler = new Handler();
 			$companiesHandler->editEntryById();
 		break;
 }

@@ -1,8 +1,8 @@
 <?php
 
-require_once("Companies.php");
+require_once("LinkkBackend.php");
 		
-class CompaniesHandler  {
+class Handler  {
 
 	function getAllEntries() {	
 
