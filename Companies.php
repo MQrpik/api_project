@@ -69,7 +69,61 @@ Class Company {
 		}
 	}
 
-
-	
 }
-?>
+
+Class Category {
+	private $categories = [];
+	
+	public function getAllCat(){
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$query = 'SELECT * FROM categories WHERE id = '.$id;
+		} else {
+			$query = 'SELECT * FROM categories';
+		}
+		$dbcontroller = new DBController();
+		$this->categories = $dbcontroller->executeSelectQuery($query);
+		return $this->categories;
+	}
+
+	public function addCategory(){
+		if(isset($_POST['category_name'])){
+			$name = $_POST['category_name'];
+			$order = $_POST['view_order'];
+			$query = "insert into categories (category_name, view_order) values ('" . $name ."','". $order ."')";
+			$dbcontroller = new DBController();
+			$result = $dbcontroller->executeQuery($query);
+			if($result != 0){
+				$result = array('success'=>1);
+				return $result;
+			}
+		}
+	}
+
+	public function deleteCategory(){
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$query = 'DELETE FROM categories WHERE id = '.$id;
+			$dbcontroller = new DBController();
+			$result = $dbcontroller->executeQuery($query);
+			if($result != 0){
+				$result = array('success'=>1);
+				return $result;
+			}
+		}
+	}
+
+	public function editCategory(){
+		if(isset($_POST['category_name']) && isset($_GET['id'])){
+			$name = $_POST['category_name'];
+			$query = "UPDATE categories SET name = '" . $name ."' WHERE id = ".$_GET['id'];
+		}
+		$dbcontroller = new DBController();
+		$result= $dbcontroller->executeQuery($query);
+		if($result != 0){
+			//$result = array('success'=>1);
+			return $result;
+		}
+	}
+
+}
