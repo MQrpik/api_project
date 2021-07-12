@@ -39,8 +39,13 @@ $page_key = $_GET["do"];
 		break;
 		
 		case "update":
-				$companiesHandler = new Handler();
+			$companiesHandler = new Handler();
 			$companiesHandler->editEntryById();
+		break;
+		
+		case "updateCat":
+			$companiesHandler = new Handler();
+			$companiesHandler->editCatById();
 		break;
 }
 ?>
